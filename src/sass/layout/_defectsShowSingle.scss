@@ -1,0 +1,78 @@
+.section-show-single-defect{
+  font-size: 1.6rem;
+  padding: 3rem;
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: space-around;
+}
+
+.show-single-defect{
+
+  &__main{
+    width: 70%;
+
+  }
+
+  &__heading{
+
+  }
+
+  &__bug-id{
+    margin-right: 1rem;
+    color: teal;
+  }
+
+  &__created{
+    color: #4d4d4d;
+    font-weight: 300;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  &__title{
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #777777;
+  }
+
+  &__description{
+    color: var(--Grey-dark-1);
+  }
+
+  &__details-box{
+    width: 20%;
+    border-radius: 3px;
+    border: 1px solid #b0b0b0;
+    background-color: #ececec;
+  }
+
+  &__list{
+    list-style: none;
+    padding: 2rem;
+    width: 100%;
+    color: black;
+    font-weight: 400;
+    font-size: 1.5rem;
+
+    &--item{
+      position: relative;
+
+      &:not(:last-child){
+        margin-bottom: 2rem;
+      }
+    }
+
+    &--item-right{
+      position: absolute;
+      top: 0;
+      left: 40%;
+    }
+  }
+}
+
+.right{
+  position: absolute;
+  top: 0;
+  left: 40%;
+}

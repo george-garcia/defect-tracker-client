@@ -1,0 +1,57 @@
+.section-defects-create{
+  font-size: 1.6rem;
+  margin: 3rem 3rem;
+}
+
+.defects-create__container{
+  display: flex;
+}
+
+.col-left{
+  flex: 0 0 50%;
+  display: flex;
+
+}
+
+.col-right{
+  flex: 0 0 50%;
+  display: flex;
+
+}
+
+.defects-create__list{
+
+  list-style: none;
+
+  &--left {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
+
+  &--right{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
+}
+
+.defects-create__item{
+  display: flex;
+  align-items: center;
+  height: 7rem;
+
+}
+
+[id^="input"]{
+  width: 30rem;
+  margin-left: 3rem;
+}
+
+#input{
+  &__bug{
+  }
+
+  &__select{
+  }
+}

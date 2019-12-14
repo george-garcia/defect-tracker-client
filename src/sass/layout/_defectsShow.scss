@@ -1,0 +1,55 @@
+.defect{
+
+  padding: 1rem 0 1rem;
+  border-bottom: 1px solid #333333;
+
+
+
+  &:hover{
+    background-color: rgba(255, 51, 102, 0.6);
+  }
+
+  &__heading{
+    margin-left: 1rem;
+    font-size: 1.6rem;
+  }
+
+  &__id{
+    margin-right: 2rem;
+  }
+
+  &__title{
+    font-size: 1.4rem;
+
+    &:link, &:visited{
+      text-decoration: none;
+    }
+  }
+
+  &__details{
+    color: #777777;
+    font-size: 1.2rem;
+    margin: 1rem 0 0 5rem;
+    display: flex;
+
+
+
+    &--left{
+      width: 60%;
+      display: inline-flex;
+      justify-content: space-around;
+      border-left: #333333;
+    }
+
+    &--right{
+      width: 30%;
+      display: inline-flex;
+      justify-content: end;
+
+    }
+  }
+
+  &__created{
+    margin-left: 5rem;
+  }
+}
