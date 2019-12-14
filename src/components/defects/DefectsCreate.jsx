@@ -18,8 +18,6 @@ class DefectsCreate extends React.Component {
 
     renderInput = (formProps) => {
 
-        console.log(formProps);
-
         return (
             <div>
                 <label htmlFor="input__bug">{formProps.title}</label>
@@ -41,9 +39,6 @@ class DefectsCreate extends React.Component {
             </div>
         );
     };
-
-
-
 
 
     onSubmit = (formValues) => {

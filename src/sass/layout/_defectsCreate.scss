@@ -1,10 +1,12 @@
 .section-defects-create{
   font-size: 1.6rem;
-  margin: 3rem 3rem;
+  background-color: var(--Grey-light-2);
+  min-height: 100%;
 }
 
 .defects-create__container{
   display: flex;
+  padding: 3rem 3rem;
 }
 
 .col-left{
@@ -43,10 +45,26 @@
 
 }
 
+
+
 [id^="input"]{
   width: 30rem;
   margin-left: 3rem;
 }
+
+.defects-create__bottom{
+
+}
+
+.defects-create__button{
+  position: relative;
+}
+
+.defects-create__title,
+.defects-create__description{
+}
+
+
 
 #input{
   &__bug{
@@ -54,4 +72,26 @@
 
   &__select{
   }
+
+  &__title{
+    width: 80%;
+    font-size: 1.8rem;
+    height: 4rem;
+    margin-top: 2rem;
+  }
+
+  &__description{
+    width: 80%;
+    margin-top: 2rem;
+    font-size: 1.7rem;
+  }
+
+}
+
+.input__button{
+
+  position: absolute;
+  top: 0;
+  left: 40%;
+
 }

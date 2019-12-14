@@ -28,7 +28,7 @@ class DefectsEdit extends React.Component{
         return (
             <div>
                 <DefectsForm initialValues={_.pick(this.props.defect,
-                    'project', 'version', 'type', 'created', 'priority', 'state', 'assigned')}
+                    'project', 'version', 'type', 'created', 'priority', 'state', 'assigned', 'title', 'description')}
                              onSubmit={this.onSubmit}
                              //readOnly should be set to false as items should be editable
                             //they should not be readOnly if they are editable

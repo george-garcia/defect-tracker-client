@@ -11,98 +11,139 @@ class DefectsForm extends React.Component {
     project = <option value="Defect Tracker">Defect Tracker</option>;
     version = <option value="1.0.0">1.0.0</option>;
     type = [
-        <option value="Feature">Feature</option>,
-        <option value="Bug">Bug</option>
+        <option key="Feature" value="Feature">Feature</option>,
+        <option key="Bug" value="Bug">Bug (Issue)</option>
+    ];
+
+    priority = [
+        <option key="Minor" value="Minor">Minor</option>,
+        <option key="Major" value="Major">Major</option>,
+        <option key="Critical" value="Critical">Critical</option>
     ];
 
 
 
-    renderSelect = (formProps, selectOption, valueTitle) => {
+    renderSelect = (formProps) => {
         return (
             <div>
-                <label htmlFor="input__select">{valueTitle}</label>
+                <label htmlFor={formProps.style}>{formProps.title}</label>
 
-                <select id="input__select" onChange={formProps.input.onChange} value={formProps.input.value}>
+                <select id={formProps.style} onChange={formProps.input.onChange} value={formProps.input.value}>
                     <option>Please Select One</option>
-                    {selectOption}
+                    {formProps.selectOption}
                 </select>
             </div>
         );
     };
 
-    renderInput = (formProps, valueTitle, readOnly) => {
-
+    renderInput = (formProps) => {
 
         return (
             <div>
-                <label htmlFor="input__bug">{valueTitle}</label>
+                <label htmlFor={formProps.style}>{formProps.title}</label>
 
-                <input id="input__bug" onChange={formProps.input.onChange} value={formProps.input.value} {...readOnly} />
+                <input id={formProps.style} onChange={formProps.input.onChange} value={formProps.input.value} {...formProps.readOnly} />
             </div>
         );
     };
 
-    renderBugId(){
-        if(!this.props.readOnly){
+    renderBugId = () => {
+        if(!this.readOnly){
             return (
                 <div>
                     <label htmlFor="input__bug">Bug ID</label>
 
-                    <input id="input__bug" value={this.props.bugId} readOnly="true" />
+                    <input id="input__bug" value={this.props.bugId} readOnly={true} />
                 </div>
             );
         }
 
         return (
-            <Field name="bugId" component={
-                (formProps) => this.renderInput(formProps, "Bug ID")}/>
+            <Field name="bugId" title="Bug ID" style="input__bug" component={this.renderInput}/>
         );
 
-    }
+    };
+
+    renderTitle = (formProps) => {
+        return (
+            <div>
+                <label htmlFor={formProps.style}>{formProps.title}</label>
+                <br/>
+                <input id={formProps.style} onChange={formProps.input.onChange} value={formProps.input.value} />
+            </div>
+        );
+    };
+
+    renderDescription = (formProps) => {
+        return (
+            <div>
+                <label htmlFor={formProps.style}>{formProps.title}</label>
+                <br/>
+                <textarea  rows={8} id={formProps.style} onChange={formProps.input.onChange} value={formProps.input.value} />
+            </div>
+        );
+    };
+
+
 
     onSubmit = (formValues) => {
 
-        // this.props.onSubmit({...formValues});
-        console.log(formValues);
+        this.props.onSubmit({...formValues});
+        // console.log(formValues);
     };
 
     renderContent = () => {
+        console.log(this.props);
         return (
             <div className="section-defects-create">
-                <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="defects-create__container">
-                    <div className="col-left">
-                        <ul className="defects-create__list--left">
-                            <li className="defects-create__item">
-                                <Field name="project" component={
-                                    (formProps) => this.renderSelect(formProps, this.project, "Project")}/></li>
-                            <li className="defects-create__item">
-                                <Field name="version" component={
-                                    (formProps) => this.renderSelect(formProps, this.version, "Version")}/></li>
-                            <li className="defects-create__item">
-                                <Field name="type" component={
-                                    (formProps) => this.renderSelect(formProps, this.type, "Type")}/></li>
-                            <li className="defects-create__item">
-                                <Field name="created" component={
-                                    (formProps) => this.renderInput(formProps, "Submitted")}/></li>
-                        </ul>
+                <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+                    <div className="defects-create__container">
+                        <div className="col-left">
+                            <ul className="defects-create__list--left">
+                                <li className="defects-create__item">
+                                    <Field name="project" selectOption={this.project} title="Project" style="input__bug" component={
+                                        this.renderSelect}/></li>
+                                <li className="defects-create__item">
+                                    <Field name="version" title="Version" selectOption={this.version} style="input__bug" component={
+                                        this.renderSelect}/></li>
+                                <li className="defects-create__item">
+                                    <Field name="type" title="Type" selectOption={this.type} style="input__bug" component={
+                                        this.renderSelect}/></li>
+                                <li className="defects-create__item">
+                                    <Field name="priority" title="Priority"
+                                           selectOption={this.priority} style="input__bug" component={this.renderSelect}/></li>
+                            </ul>
+                        </div>
+                        <div className="col-right">
+                            <ul className="defects-create__list--right">
+                                <li className="defects-create__item">
+                                    {this.renderBugId()}</li>
+                                <li className="defects-create__item">
+                                    <Field name="created" title="Submitted" style="input__bug" readOnly={{readOnly: 1}} component={
+                                        this.renderInput}/></li>
+                                <li className="defects-create__item">
+                                    <Field name="state" title="State" style="input__bug" component={
+                                        this.renderInput}/></li>
+                                <li className="defects-create__item">
+                                    <Field name="assigned" title="Assigned" style="input__bug" component={
+                                        this.renderInput}/></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div className="col-right">
-                        <ul className="defects-create__list--right">
-                            <li className="defects-create__item">
-                                {this.renderBugId()}
-                                </li>
-                            <li className="defects-create__item">
-                                <Field name="priority" component={
-                                    (formProps) => this.renderInput(formProps, "Priority")}/></li>
-                            <li className="defects-create__item">
-                                <Field name="state" component={
-                                    (formProps) => this.renderInput(formProps, "State")}/></li>
-                            <li className="defects-create__item">
-                                <Field name="assigned" component={(formProps) => this.renderInput
-                                (formProps, "Assigned", {readOnly: this.props.readOnly})}/></li>
-                            {/*<button type="submit">Submit</button>*/}
-                        </ul>
+
+                    <div className="defects-create__bottom">
+                        <div className="defects-create__title u-margin-bottom-medium">
+                            <Field name="title" title="Title" style="input__title" component={this.renderTitle} />
+                        </div>
+
+                        <div className="defects-create__description u-margin-bottom-small">
+                            <Field name="description" title="Description" style="input__description" component={this.renderDescription}/>
+                        </div>
+                        <div className="defects-create__button">
+                            <button className="input__button" type="submit">Submit</button>
+                        </div>
                     </div>
+
                 </form>
             </div>
         );
