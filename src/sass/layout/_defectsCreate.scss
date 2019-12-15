@@ -9,6 +9,10 @@
   padding: 3rem 3rem;
 }
 
+.defects-create__bottom{
+  padding-left: 3rem;
+}
+
 .col-left{
   flex: 0 0 50%;
   display: flex;
@@ -50,10 +54,6 @@
 [id^="input"]{
   width: 30rem;
   margin-left: 3rem;
-}
-
-.defects-create__bottom{
-
 }
 
 .defects-create__button{

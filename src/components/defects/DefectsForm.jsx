@@ -93,7 +93,6 @@ class DefectsForm extends React.Component {
     };
 
     renderContent = () => {
-        console.log(this.props);
         return (
             <div className="section-defects-create">
                 <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
@@ -158,6 +157,31 @@ class DefectsForm extends React.Component {
         );
     }
 }
+
+const validate = (formValues) => {
+
+    const errors = {};
+
+    if(!formValues.title){
+        errors.title = 'You must enter a Title.';
+    }
+    if(!formValues.description){
+        errors.description = 'You must enter a Description';
+    }
+    if(!formValues.project){
+        errors.title = 'You must enter a Project.';
+    }
+    if(!formValues.version){
+        errors.title = 'You must enter a Version.';
+    }
+    if(!formValues.type){
+        errors.title = 'You must enter a type.';
+    }
+
+
+    return errors;
+
+};
 
 export default reduxForm({form: 'DefectsForm'})(DefectsForm);
 

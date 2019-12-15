@@ -11,7 +11,7 @@ class DefectsEdit extends React.Component{
     }
 
     onSubmit = (formValues) => {
-        console.log(formValues)
+        this.props.editDefect(this.props.match.params.id, formValues);
     };
 
 
